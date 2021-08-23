@@ -1,0 +1,9 @@
+package dev.patika.thirdhomework.repository;
+
+import dev.patika.thirdhomework.entity.Instructor;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface InstructorRepository extends CrudRepository<Instructor,Integer> {
+}
