@@ -4,7 +4,10 @@ import dev.patika.thirdhomework.entity.Student;
 import dev.patika.thirdhomework.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,23 +17,30 @@ public class StudentService implements BaseService<Student>{
     private final StudentRepository studentRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<Student> findAll() {
-        return null;
+        List<Student>  students = new ArrayList<>();
+        Iterable<Student> studentIterable = studentRepository.findAll();
+        studentIterable.iterator().forEachRemaining(students::add);
+        return students;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Student findById(int id) {
-        return null;
+        return studentRepository.findById(id).get();
     }
 
     @Override
-    public Student save(Student object) {
-        return null;
+    @Transactional
+    public Student save(Student student) {
+        return studentRepository.save(student);
     }
 
     @Override
+    @Transactional
     public void deleteById(int id) {
-
+        studentRepository.deleteById(id);
     }
 
     @Override
@@ -39,7 +49,7 @@ public class StudentService implements BaseService<Student>{
     }
 
     @Override
-    public Student update(Student object) {
-        return null;
+    public Student update(Student student) {
+        return studentRepository.save(student);
     }
 }
