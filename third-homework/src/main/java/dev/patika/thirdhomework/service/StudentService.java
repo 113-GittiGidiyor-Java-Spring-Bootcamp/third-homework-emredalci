@@ -11,7 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StudentService implements BaseService<Student>{
 
-    private StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
 
     @Override
     public List<Student> findAll() {

@@ -11,7 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class InstructorService implements BaseService<Instructor>{
 
-    private InstructorRepository instructorRepository;
+    private final InstructorRepository instructorRepository;
 
     @Override
     public List<Instructor> findAll() {
