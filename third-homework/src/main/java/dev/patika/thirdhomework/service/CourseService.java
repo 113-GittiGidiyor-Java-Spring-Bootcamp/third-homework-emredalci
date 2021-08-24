@@ -4,7 +4,9 @@ import dev.patika.thirdhomework.entity.Course;
 import dev.patika.thirdhomework.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,33 +16,41 @@ public class CourseService implements BaseService<Course>{
     private final CourseRepository courseRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<Course> findAll() {
-
-        return null;
+        List<Course> courses = new ArrayList<>();
+        Iterable<Course> courseIterable = courseRepository.findAll();
+        courseIterable.iterator().forEachRemaining(courses::add);
+        return courses;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Course findById(int id) {
-        return null;
+        return courseRepository.findById(id).get();
     }
 
     @Override
-    public Course save(Course object) {
-        return null;
+    @Transactional
+    public Course save(Course course) {
+        return courseRepository.save(course);
     }
 
     @Override
+    @Transactional
     public void deleteById(int id) {
-
+        courseRepository.deleteById(id);
     }
 
     @Override
+    @Transactional
     public void deleteByName(String name) {
 
     }
 
     @Override
-    public Course update(Course object) {
-        return null;
+    @Transactional
+    public Course update(Course course) {
+        return courseRepository.save(course);
     }
 }
