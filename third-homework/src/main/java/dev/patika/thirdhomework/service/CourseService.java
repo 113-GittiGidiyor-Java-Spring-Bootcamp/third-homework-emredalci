@@ -50,7 +50,15 @@ public class CourseService implements BaseService<Course>{
 
     @Override
     @Transactional
+    public void delete(Course course) {
+        courseRepository.delete(course);
+    }
+
+    @Override
+    @Transactional
     public Course update(Course course) {
         return courseRepository.save(course);
     }
+
+
 }

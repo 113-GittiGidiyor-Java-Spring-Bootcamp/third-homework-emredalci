@@ -14,5 +14,9 @@ public interface BaseService<T>{
 
     void deleteByName(String name);
 
+    void delete(T object);
+
     T update(T object);
+
+
 }

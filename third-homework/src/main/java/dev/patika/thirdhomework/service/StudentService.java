@@ -52,9 +52,17 @@ public class StudentService implements BaseService<Student>{
 
     @Override
     @Transactional
+    public void delete(Student student) {
+        studentRepository.delete(student);
+    }
+
+    @Override
+    @Transactional
     public Student update(Student student) {
         return studentRepository.save(student);
     }
+
+
 
     @Transactional
     public List<StudentGenderStatistics> getGendersWithGrouping(){ // List<?> ???

@@ -50,9 +50,17 @@ public class InstructorService implements BaseService<Instructor>{
 
     @Override
     @Transactional
+    public void delete(Instructor instructor) {
+        instructorRepository.delete(instructor);
+    }
+
+    @Override
+    @Transactional
     public Instructor update(Instructor instructor) {
         return instructorRepository.save(instructor);
     }
+
+
 
     @Transactional
     public List<Instructor> findFirst3ByNameOrderBySalaryDesc(){
