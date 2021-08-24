@@ -1,6 +1,7 @@
 package dev.patika.thirdhomework.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import javax.persistence.Entity;
 @Data // --> @RequiredArgsConstructor, @Getter, @Setter, @EqualsAndHashCode , @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class PermanentInstructor extends Instructor{
 
     //instance variables

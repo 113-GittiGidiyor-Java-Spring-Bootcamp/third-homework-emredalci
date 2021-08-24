@@ -2,6 +2,7 @@ package dev.patika.thirdhomework.entity;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -25,6 +26,7 @@ import java.util.List;
         @JsonSubTypes.Type(value = PermanentInstructor.class, name = "PermanentInstructor"),
         @JsonSubTypes.Type(value = VisitingResearcher.class, name = "VisitingResearcher")
 })
+@Builder
 public class Instructor {
 
     //instance variables
