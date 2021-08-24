@@ -34,7 +34,7 @@ public class Course {
     private String courseCode;
 
     @Column(name = "credit_score")
-    private String creditScore;
+    private double creditScore;
 
     @ManyToMany(mappedBy = "courses")
     private List<Student> students = new ArrayList<>();
