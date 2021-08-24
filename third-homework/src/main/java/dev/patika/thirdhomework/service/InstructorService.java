@@ -53,4 +53,14 @@ public class InstructorService implements BaseService<Instructor>{
     public Instructor update(Instructor instructor) {
         return instructorRepository.save(instructor);
     }
+
+    @Transactional
+    public List<Instructor> findFirst3ByNameOrderBySalaryDesc(){
+        return instructorRepository.findFirst3ByNameOrderBySalaryDesc();
+    }
+
+    @Transactional
+    public List<Instructor> findFirst3ByNameOrderBySalaryAsc(){
+        return instructorRepository.findFirst3ByNameOrderBySalaryAsc();
+    }
 }
