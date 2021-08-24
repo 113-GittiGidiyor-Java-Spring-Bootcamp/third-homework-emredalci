@@ -1,6 +1,7 @@
 package dev.patika.thirdhomework.service;
 
 import dev.patika.thirdhomework.entity.Student;
+import dev.patika.thirdhomework.repository.StudentGenderStatistics;
 import dev.patika.thirdhomework.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -53,5 +54,10 @@ public class StudentService implements BaseService<Student>{
     @Transactional
     public Student update(Student student) {
         return studentRepository.save(student);
+    }
+
+    @Transactional
+    public List<StudentGenderStatistics> getGendersWithGrouping(){ // List<?> ???
+        return studentRepository.getGendersWithGrouping();
     }
 }
