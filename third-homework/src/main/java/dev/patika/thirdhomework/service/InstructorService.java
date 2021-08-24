@@ -43,11 +43,13 @@ public class InstructorService implements BaseService<Instructor>{
     }
 
     @Override
+    @Transactional
     public void deleteByName(String name) {
-
+        instructorRepository.deleteByName(name);
     }
 
     @Override
+    @Transactional
     public Instructor update(Instructor instructor) {
         return instructorRepository.save(instructor);
     }

@@ -44,11 +44,13 @@ public class StudentService implements BaseService<Student>{
     }
 
     @Override
+    @Transactional
     public void deleteByName(String name) {
-
+        studentRepository.deleteByName(name);
     }
 
     @Override
+    @Transactional
     public Student update(Student student) {
         return studentRepository.save(student);
     }

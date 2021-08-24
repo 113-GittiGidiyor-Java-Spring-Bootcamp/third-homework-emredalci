@@ -45,7 +45,7 @@ public class CourseService implements BaseService<Course>{
     @Override
     @Transactional
     public void deleteByName(String name) {
-
+        courseRepository.deleteByCourseName(name);
     }
 
     @Override
