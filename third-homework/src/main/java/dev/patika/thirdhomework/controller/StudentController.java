@@ -43,7 +43,7 @@ public class StudentController {
         return "Student deleted..";
     }
 
-    
+
     @DeleteMapping("/deleteStudentByObject")
     public String deleteStudentByObject(@RequestBody Student student){
         studentService.delete(student);
@@ -51,8 +51,8 @@ public class StudentController {
     }
 
     @GetMapping("/genderWithGrouping")
-    public ResponseEntity<List<StudentGenderStatistics>> getGendersWithGrouping(){
-        return (ResponseEntity<List<StudentGenderStatistics>>) studentService.getGendersWithGrouping();
+    public ResponseEntity<List<?>> getGendersWithGrouping(){
+        return new ResponseEntity<>(studentService.getGendersWithGrouping(),HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteStudentByName/{name}")

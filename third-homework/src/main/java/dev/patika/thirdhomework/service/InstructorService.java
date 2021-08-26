@@ -75,13 +75,13 @@ public class InstructorService implements BaseService<Instructor>{
     }
 
     @Transactional
-    public List<Instructor> top3ByOrdeOrderByHourlySalaryAsc(){
-        return visitingResearcherRepository.findTop3ByOrdeOrderByHourlySalaryAsc();
+    public List<Instructor> top3ByOrderByHourlySalaryAsc(){
+        return visitingResearcherRepository.findTop3ByOrderByHourlySalaryAsc();
     }
 
     @Transactional
-    public List<Instructor> top3ByOrdeOrderByHourlySalaryDesc(){
-        return visitingResearcherRepository.findTop3ByOrdeOrderByHourlySalaryDesc();
+    public List<Instructor> top3ByOrderByHourlySalaryDesc(){
+        return visitingResearcherRepository.findTop3ByOrderByHourlySalaryDesc();
     }
 
 

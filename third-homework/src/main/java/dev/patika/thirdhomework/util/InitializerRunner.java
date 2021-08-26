@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class InitializerRunner implements CommandLineRunner {
@@ -32,8 +34,17 @@ public class InitializerRunner implements CommandLineRunner {
         studentRepository.deleteAll();
 
         //Instructor
-        Instructor instructor1 = PermanentInstructor.builder().name("Koray Güney").address("İstanbul").phoneNumber("+9012345678901").fixedSalary(100).build();
-        Instructor instructor2 = VisitingResearcher.builder().name("Ahmet Mehmet").address("Ankara").phoneNumber("+9012345678987").hourlySalary(50).build();
+        Instructor instructor1 = PermanentInstructor.builder().name("Koray").address("İstanbul").phoneNumber("+9012345678901").fixedSalary(100).build();
+        Instructor instructor2 = PermanentInstructor.builder().name("Ahmet").address("İstanbul").phoneNumber("+9012345678901").fixedSalary(200).build();
+        Instructor instructor3 = PermanentInstructor.builder().name("Mehmet").address("İstanbul").phoneNumber("+9012345678901").fixedSalary(300).build();
+        Instructor instructor4 = PermanentInstructor.builder().name("Emre").address("İstanbul").phoneNumber("+9012345678901").fixedSalary(400).build();
+
+
+
+        Instructor instructor5 = VisitingResearcher.builder().name("Remzi").address("Ankara").phoneNumber("+9012345678987").hourlySalary(50).build();
+        Instructor instructor6 = VisitingResearcher.builder().name("Erhan").address("Ankara").phoneNumber("+9012345678987").hourlySalary(75).build();
+        Instructor instructor7 = VisitingResearcher.builder().name("Mustafa").address("Ankara").phoneNumber("+9012345678987").hourlySalary(80).build();
+        Instructor instructor8 = VisitingResearcher.builder().name("Murat").address("Ankara").phoneNumber("+9012345678987").hourlySalary(90).build();
 
         //Course
         Course course1 = Course.builder().courseName("Bilgisayar Müh. Giriş").courseCode("CS101").creditScore(5).build();
@@ -48,19 +59,32 @@ public class InitializerRunner implements CommandLineRunner {
         Student student6 = Student.builder().name("Sibel").birthDate(LocalDate.of(1992, Month.MAY,17)).address("Antalya").gender('K').build();
         Student student7 = Student.builder().name("Pınar").birthDate(LocalDate.of(1991, Month.APRIL,2)).address("Tekirdağ").gender('K').build();
 
+
         course1.setInstructor(instructor1);
         course2.setInstructor(instructor2);
 
-        course1.getStudents().add(student1);
-        course1.getStudents().add(student2);
-        course1.getStudents().add(student3);
-        course2.getStudents().add(student4);
-        course2.getStudents().add(student5);
-        course2.getStudents().add(student6);
-        course2.getStudents().add(student7);
+
+        List<Student> students = new ArrayList<>();
+        students.add(student1);
+        students.add(student2);
+        students.add(student3);
+        students.add(student4);
+        students.add(student5);
+        students.add(student6);
+        students.add(student7);
+
+        course1.setStudents(students);
+        /*
+        List<Course> courses = new ArrayList<>();
+        courses.add(course1);
+        courses.add(course2);
+        student1.setCourses(courses);
+        */
 
 
         //Save to Database
+
+
         studentRepository.save(student1);
         studentRepository.save(student2);
         studentRepository.save(student3);
@@ -69,11 +93,19 @@ public class InitializerRunner implements CommandLineRunner {
         studentRepository.save(student6);
         studentRepository.save(student7);
 
+        instructorRepository.save(instructor1);
+        instructorRepository.save(instructor2);
+        instructorRepository.save(instructor3);
+        instructorRepository.save(instructor4);
+        instructorRepository.save(instructor5);
+        instructorRepository.save(instructor6);
+        instructorRepository.save(instructor7);
+        instructorRepository.save(instructor8);
+
         courseRepository.save(course1);
         courseRepository.save(course2);
 
-        instructorRepository.save(instructor1);
-        instructorRepository.save(instructor2);
+
 
 
 

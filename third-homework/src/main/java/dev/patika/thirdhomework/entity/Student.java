@@ -2,10 +2,7 @@ package dev.patika.thirdhomework.entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -39,10 +36,7 @@ public class Student {
     @Column(name = "gender")
     private char gender;
 
-    @ManyToMany
-    @JoinTable(name = "student_course",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "course_id"))
+    @ManyToMany(cascade = CascadeType.MERGE)
     private List<Course> courses = new ArrayList<>();
 
 }

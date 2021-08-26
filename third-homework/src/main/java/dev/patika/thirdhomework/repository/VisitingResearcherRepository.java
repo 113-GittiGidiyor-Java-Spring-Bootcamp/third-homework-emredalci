@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface VisitingResearcherRepository extends InstructorBaseRepository<VisitingResearcher>{
 
-    List<Instructor> findTop3ByOrdeOrderByHourlySalaryAsc();
-    List<Instructor> findTop3ByOrdeOrderByHourlySalaryDesc();
+    List<Instructor> findTop3ByOrderByHourlySalaryAsc();
+    List<Instructor> findTop3ByOrderByHourlySalaryDesc();
 
 }

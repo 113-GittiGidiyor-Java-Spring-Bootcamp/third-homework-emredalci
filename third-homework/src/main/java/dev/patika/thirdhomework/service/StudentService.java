@@ -65,7 +65,7 @@ public class StudentService implements BaseService<Student>{
 
 
     @Transactional
-    public List<StudentGenderStatistics> getGendersWithGrouping(){ // List<?> ???
+    public List<?> getGendersWithGrouping(){ // List<?> ???
         return studentRepository.getGendersWithGrouping();
     }
 }

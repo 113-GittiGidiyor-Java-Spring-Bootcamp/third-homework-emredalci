@@ -41,7 +41,7 @@ public class Course {
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "instructor_id",nullable = false)
+    @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 
 
