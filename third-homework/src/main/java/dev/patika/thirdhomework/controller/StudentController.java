@@ -43,7 +43,8 @@ public class StudentController {
         return "Student deleted..";
     }
 
-    @DeleteMapping("deleteStudentByObject")
+    
+    @DeleteMapping("/deleteStudentByObject")
     public String deleteStudentByObject(@RequestBody Student student){
         studentService.delete(student);
         return "Student deleted..";
