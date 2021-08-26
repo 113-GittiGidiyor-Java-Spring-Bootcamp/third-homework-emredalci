@@ -2,6 +2,8 @@ package dev.patika.thirdhomework.service;
 
 import dev.patika.thirdhomework.entity.Instructor;
 import dev.patika.thirdhomework.repository.InstructorRepository;
+import dev.patika.thirdhomework.repository.PermanentInstructorRepository;
+import dev.patika.thirdhomework.repository.VisitingResearcherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +16,8 @@ import java.util.List;
 public class InstructorService implements BaseService<Instructor>{
 
     private final InstructorRepository instructorRepository;
+    private final PermanentInstructorRepository permanentInstructorRepository;
+    private final VisitingResearcherRepository visitingResearcherRepository;
 
     @Override
     @Transactional(readOnly = true)
@@ -60,15 +64,25 @@ public class InstructorService implements BaseService<Instructor>{
         return instructorRepository.save(instructor);
     }
 
-
-
     @Transactional
-    public List<Instructor> findFirst3ByNameOrderBySalaryDesc(){
-        return instructorRepository.findFirst3ByNameOrderBySalaryDesc();
+    public List<Instructor> top3ByOrderByFixedSalaryDesc() {
+        return permanentInstructorRepository.findTop3ByOrderByFixedSalaryDesc();
     }
 
     @Transactional
-    public List<Instructor> findFirst3ByNameOrderBySalaryAsc(){
-        return instructorRepository.findFirst3ByNameOrderBySalaryAsc();
+    public List<Instructor> top3ByOrderByFixedSalaryAsc() {
+        return permanentInstructorRepository.findTop3ByOrderByFixedSalaryAsc();
     }
+
+    @Transactional
+    public List<Instructor> top3ByOrdeOrderByHourlySalaryAsc(){
+        return visitingResearcherRepository.findTop3ByOrdeOrderByHourlySalaryAsc();
+    }
+
+    @Transactional
+    public List<Instructor> top3ByOrdeOrderByHourlySalaryDesc(){
+        return visitingResearcherRepository.findTop3ByOrdeOrderByHourlySalaryDesc();
+    }
+
+
 }
