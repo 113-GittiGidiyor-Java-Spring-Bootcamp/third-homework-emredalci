@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 public class CurrencyController {
 
     private final static String ENDPOINT = "http://localhost:8081/currency/toTl?quantity=";
+    private final static String ENDPOINT_USD = "http://localhost:8081/currency/toUSD?quantity=";
 
     @Autowired
     RestTemplate restTemplate;
@@ -21,6 +22,11 @@ public class CurrencyController {
     public String sendQuantity(@RequestParam double value){
 
         return restTemplate.getForEntity(ENDPOINT+value,String.class).getBody();
+    }
+
+    @GetMapping("/sendQuantityUsd")
+    public String sendQuantityUsd(@RequestParam double valueUsd){
+        return restTemplate.getForEntity(ENDPOINT_USD+valueUsd,String.class).getBody();
     }
 
 
