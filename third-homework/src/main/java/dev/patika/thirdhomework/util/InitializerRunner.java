@@ -74,12 +74,8 @@ public class InitializerRunner implements CommandLineRunner {
         students.add(student7);
 
         course1.setStudents(students);
-        /*
-        List<Course> courses = new ArrayList<>();
-        courses.add(course1);
-        courses.add(course2);
-        student1.setCourses(courses);
-        */
+
+        
 
 
         //Save to Database
